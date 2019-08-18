@@ -1,5 +1,5 @@
 {
-  "name": "fusionspim/php-markdown-toc",
+  "name": "geeyan/php-markdown-toc",
   "description": "Generates a table of contents for a Markdown document, based on the headings within",
   "keywords": ["document", "html", "markdown", "toc"],
   "license": "MIT",
