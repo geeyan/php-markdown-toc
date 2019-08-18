@@ -30,7 +30,8 @@ class MarkdownTableOfContents
         $body = $this->buildLinkedMarkdown();
         $toc  = $this->buildTableOfContents();
 
-        return $toc . "\r\n" . $body;
+        return str_replace('[TOC]', $toc, $body);
+        // return $toc . "\r\n" . $body;
     }
 
     protected function buildLinkedMarkdown(): string
@@ -53,7 +54,7 @@ class MarkdownTableOfContents
                 ];
 
                 $markdown .= sprintf(
-                    '%s%s <a name="%s" id="%s">%s</a>%s',
+                    '%s%s <span name="%s" id="%s">%s</span>%s',
                     $matches['prespace'] ?? '',
                     $matches['level'],
                     $anchor,
@@ -89,12 +90,12 @@ class MarkdownTableOfContents
             return '';
         }
 
-        $markdown = '# Contents' . "\n";
-
+        // $markdown = '# Contents' . "\n";
+        $markdown = '';
         foreach ($this->headings as $heading) {
             $markdown .= sprintf(
                 '%s [%s](#%s)' . "\n",
-                str_repeat('    ', $heading['level'] - 1) . '*',
+                str_repeat('    ', $heading['level'] - 3) . '*',
                 trim($heading['title']),
                 $heading['anchor']
             );
