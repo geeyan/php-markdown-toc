@@ -95,7 +95,7 @@ class MarkdownTableOfContents
         foreach ($this->headings as $heading) {
             $markdown .= sprintf(
                 '%s [%s](#%s)' . "\n",
-                str_repeat('    ', $heading['level'] - 3) . '*',
+                str_repeat('    ', $heading['level'] - 2) . '*',
                 trim($heading['title']),
                 $heading['anchor']
             );
